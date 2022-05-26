@@ -14,7 +14,7 @@ public partial class SboxrpHud : HudEntity<RootPanel>
 		if ( !IsClient )
 			return;
 
-		RootPanel.StyleSheet.Load( "HUD.scss" );
+		RootPanel.StyleSheet.Load( "SboxrpHUD.scss" );
 
 
 		RootPanel.AddChild<ChatBox>();

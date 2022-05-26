@@ -12,15 +12,10 @@ internal partial class SboxrpGame
 	[Net]
 	public bool Connected { get; set; }
 
-	private static WebSocket WebSocket;
+	private static WebSocket WebSocket = new WebSocket();
 
 	public static async Task Post( string controller, string jsonData )
 	{
-		await WebSocket.Connect( "http://google.com" );
-
-		await WebSocket.Send( "https://reqbin.com/echo/post/json" );
-
-		Log.Info( "Posted that message" );
 
 
 		/*var msg = new GameMessage()
@@ -60,9 +55,15 @@ internal partial class SboxrpGame
 	{
 		Host.AssertServer();
 
-		if ( !Global.IsDedicatedServer ) return;
+		//if ( !Global.IsDedicatedServer ) return;
 
 		Log.Info( "The player should be authenticated now, their id is: " + client.PlayerId );
+
+		await WebSocket.Connect( "wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self" );
+
+		await WebSocket.Send( "hello there" );
+
+		Log.Info( "Posted that message" );
 
 		/*var msg = new ClientLogin()
 		{
