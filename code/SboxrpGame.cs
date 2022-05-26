@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 /// You can use this to create things like HUDs and declare which player class
 /// to use for spawned players.
 /// </summary>
-public partial class SboxrpGame : Sandbox.Game
+internal partial class SboxrpGame : Sandbox.Game
 {
 	public SboxrpGame()
 	{
@@ -35,6 +35,8 @@ public partial class SboxrpGame : Sandbox.Game
 		player.Respawn();
 
 		client.Pawn = player;
+
+		//NetworkClientLogin( client );
 
 		// Create a pawn for this client to play with
 		/*var pawn = new Pawn();
