@@ -17,7 +17,7 @@ partial class SandboxPlayer : Player
 	/// </summary>
 	public SandboxPlayer()
 	{
-		//Inventory = new Inventory( this );
+		Inventory = new Inventory( this );
 	}
 
 	/// <summary>
@@ -48,12 +48,12 @@ partial class SandboxPlayer : Player
 
 		Clothing.DressEntity( this );
 
-		/*Inventory.Add( new PhysGun(), true );
+		Inventory.Add( new PhysGun(), true );
 		Inventory.Add( new GravGun() );
 		Inventory.Add( new Tool() );
 		Inventory.Add( new Pistol() );
 		Inventory.Add( new Flashlight() );
-		Inventory.Add( new Fists() );*/
+		Inventory.Add( new Fists() );
 
 		CameraMode = new FirstPersonCamera();
 
