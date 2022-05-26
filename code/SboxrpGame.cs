@@ -36,26 +36,16 @@ internal partial class SboxrpGame : Game
 
 		client.Pawn = player;
 
-		//NetworkClientLogin( client );
-
-		// Create a pawn for this client to play with
-		/*var pawn = new Pawn();
-		client.Pawn = pawn;
-
-		// Get all of the spawnpoints
-		var spawnpoints = Entity.All.OfType<SpawnPoint>();
-
-		// chose a random one
-		var randomSpawnPoint = spawnpoints.OrderBy( x => Guid.NewGuid() ).FirstOrDefault();
-
-		// if it exists, place the pawn there
-		if ( randomSpawnPoint != null )
-		{
-			var tx = randomSpawnPoint.Transform;
-			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
-			pawn.Transform = tx;
-		}*/
+		NetworkClientLogin( client );
 	}
+
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	{
+		base.ClientDisconnect( cl, reason );
+
+		Log.Info( $"{cl.Name} has disconnected" );
+	}
+
 
 	public override void DoPlayerSuicide( Client cl )
 	{

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sandbox;
 
 
 internal partial class SboxrpGame
@@ -14,12 +10,12 @@ internal partial class SboxrpGame
 	{
 		Host.AssertServer();
 
-		if (!Global.IsDedicatedServer) return;
+		if ( !Global.IsDedicatedServer ) return;
 
-		var pkg = await Package.Fetch(Global.MapName, true);
+		var pkg = await Package.Fetch( Global.MapName, true );
 		var mapTitle = pkg?.Title ?? string.Empty;
 
-		var msg = new ServerLogin()
+		/*var msg = new ServerLogin()
 		{
 			SteamId = Global.ServerSteamId,
 			ServerName = string.Empty, // no way to grab this yet?
@@ -28,16 +24,18 @@ internal partial class SboxrpGame
 			CourseType = CourseType
 		};
 
-		await Backend.Post<bool>("server/login", msg.Serialize());
+		await Backend.Post<bool>( "server/login", msg.Serialize() );*/
 	}
 
-	private async void NetworkClientLogin(Client client)
+	private async void NetworkClientLogin( Client client )
 	{
 		Host.AssertServer();
 
-		if (!Global.IsDedicatedServer) return;
+		if ( !Global.IsDedicatedServer ) return;
 
-		var msg = new ClientLogin()
+		Log.Info( "The player should be authenticated now, their id is: " + client.PlayerId );
+
+		/*var msg = new ClientLogin()
 		{
 			ServerSteamId = (long)Global.ServerSteamId,
 			Name = client.Name,
@@ -45,10 +43,10 @@ internal partial class SboxrpGame
 			MapIdent = Global.MapName
 		};
 
-		await Backend.Post<bool>("player/login", msg.Serialize());
+		await Backend.Post<bool>( "player/login", msg.Serialize() );*/
 	}
 
 	[Event.Tick.Server]
-	private void OnTick() => Connected = Backend.Connected;
+	private void OnTick() => Connected = true;
 }
 
