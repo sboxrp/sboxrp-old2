@@ -31,8 +31,13 @@ public partial class SboxrpGame : Sandbox.Game
 	{
 		base.ClientJoined( client );
 
+		var player = new SandboxPlayer( client );
+		player.Respawn();
+
+		client.Pawn = player;
+
 		// Create a pawn for this client to play with
-		var pawn = new Pawn();
+		/*var pawn = new Pawn();
 		client.Pawn = pawn;
 
 		// Get all of the spawnpoints
@@ -47,7 +52,7 @@ public partial class SboxrpGame : Sandbox.Game
 			var tx = randomSpawnPoint.Transform;
 			tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
 			pawn.Transform = tx;
-		}
+		}*/
 	}
 
 	public override void DoPlayerSuicide( Client cl )
