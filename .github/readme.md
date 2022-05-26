@@ -31,6 +31,6 @@ The output should be similar to:
 ...
 ```
 
-The numbers in the steamid is what is used to connect to the server, specifically `90159478763877378`.
+The number in the steamid is what is used to connect to the server, specifically `90159478763877378`.
 
 In the console (be it sbox.exe, sbox-dev.exe), type: `connect 90159478763877378` to connect to the dedicated server.
