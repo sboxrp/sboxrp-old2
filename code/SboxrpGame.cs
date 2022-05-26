@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 /// You can use this to create things like HUDs and declare which player class
 /// to use for spawned players.
 /// </summary>
-internal partial class SboxrpGame : Sandbox.Game
+internal partial class SboxrpGame : Game
 {
 	public SboxrpGame()
 	{
