@@ -1,27 +1,25 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 
-namespace Sandbox
+
+/// <summary>
+/// This is the HUD entity. It creates a RootPanel clientside, which can be accessed
+/// via RootPanel on this entity, or Local.Hud.
+/// </summary>
+[Library]
+public partial class SboxrpHud : HudEntity<RootPanel>
 {
-	/// <summary>
-	/// This is the HUD entity. It creates a RootPanel clientside, which can be accessed
-	/// via RootPanel on this entity, or Local.Hud.
-	/// </summary>
-	[Library]
-	public partial class SboxrpHud : HudEntity<RootPanel>
+	public SboxrpHud()
 	{
-		public SboxrpHud()
-		{
-			if ( !IsClient )
-				return;
+		if ( !IsClient )
+			return;
 
-			RootPanel.StyleSheet.Load( "HUD.scss" );
+		RootPanel.StyleSheet.Load( "HUD.scss" );
 
 
-			RootPanel.AddChild<ChatBox>();
-			RootPanel.AddChild<VoiceList>();
-			RootPanel.AddChild<KillFeed>();
-			RootPanel.AddChild<Scoreboard<ScoreboardEntry>>();
-		}
+		RootPanel.AddChild<ChatBox>();
+		RootPanel.AddChild<VoiceList>();
+		RootPanel.AddChild<KillFeed>();
+		RootPanel.AddChild<Scoreboard<ScoreboardEntry>>();
 	}
 }
