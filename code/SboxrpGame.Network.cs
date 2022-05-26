@@ -59,7 +59,7 @@ internal partial class SboxrpGame
 
 		Log.Info( "The player should be authenticated now, their id is: " + client.PlayerId );
 
-		await WebSocket.Connect( "wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self" );
+		await WebSocket.Connect( "ws://localhost:3000" );
 
 		await WebSocket.Send( "hello there" );
 
