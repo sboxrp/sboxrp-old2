@@ -18,10 +18,15 @@ namespace Sandbox
 	/// You can use this to create things like HUDs and declare which player class
 	/// to use for spawned players.
 	/// </summary>
-	public partial class MyGame : Sandbox.Game
+	public partial class SboxrpGame : Sandbox.Game
 	{
-		public MyGame()
+		public SboxrpGame()
 		{
+			if ( IsServer )
+			{
+				// Create the HUD
+				_ = new SboxrpHud();
+			}
 		}
 
 		/// <summary>
@@ -48,6 +53,11 @@ namespace Sandbox
 				tx.Position = tx.Position + Vector3.Up * 50.0f; // raise it up
 				pawn.Transform = tx;
 			}
+		}
+
+		public override void DoPlayerSuicide( Client cl )
+		{
+			Log.Info( "No suicide allowed" );
 		}
 	}
 
