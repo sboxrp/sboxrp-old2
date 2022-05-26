@@ -1,10 +1,37 @@
-﻿using Sandbox;
+﻿using Sandbox.Internal;
+using System.Threading.Tasks;
+using System.Text.Json;
+using Sandbox;
+using System.Collections.Generic;
+using System.Linq;
+using System.IO;
 
 
 internal partial class SboxrpGame
 {
 	[Net]
 	public bool Connected { get; set; }
+
+	private static WebSocket WebSocket;
+
+	public static async Task Post( string controller, string jsonData )
+	{
+		await WebSocket.Connect( "http://google.com" );
+
+		await WebSocket.Send( "https://reqbin.com/echo/post/json" );
+
+		Log.Info( "Posted that message" );
+
+
+		/*var msg = new GameMessage()
+		{
+			Id = ++MessageIdAccumulator,
+			Controller = controller,
+			Message = jsonData,
+		};
+
+		await WebSocket.Send( JsonSerializer.Serialize( msg, JsonOptions ) );*/
+	}
 
 	private async void NetworkServerLogin()
 	{
@@ -14,6 +41,8 @@ internal partial class SboxrpGame
 
 		var pkg = await Package.Fetch( Global.MapName, true );
 		var mapTitle = pkg?.Title ?? string.Empty;
+
+		await Post( "awre", "awerawere" );
 
 		/*var msg = new ServerLogin()
 		{
