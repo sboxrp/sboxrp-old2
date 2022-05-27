@@ -51,19 +51,40 @@ internal partial class SboxrpGame
 		await Backend.Post<bool>( "server/login", msg.Serialize() );*/
 	}
 
+	private static async Task<bool> EnsureWebSocket()
+	{
+		Host.AssertServer();
+
+		if ( WebSocket?.IsConnected ?? false ) return true;
+
+		WebSocket?.Dispose();
+		WebSocket = new();
+		await WebSocket.Connect( "wss://strafedb.com/api/ws" );
+
+		return WebSocket.IsConnected;
+	}
+
 	private async void NetworkClientLogin( Client client )
 	{
 		Host.AssertServer();
 
 		//if ( !Global.IsDedicatedServer ) return;
 
-		Log.Info( "The player should be authenticated now, their id is: " + client.PlayerId );
 
-		await WebSocket.Connect( "ws://localhost:3000" );
+		Log.Info( "Started connecting..." );
 
+		if ( !await EnsureWebSocket() )
+		{
+			Log.Error( "WebSocket failed to connect" );
+			return;
+		}
+
+		Log.Info( "Sending data..." );
 		await WebSocket.Send( "hello there" );
 
 		Log.Info( "Posted that message" );
+
+		Log.Info( "The player should be authenticated now, their id is: " + client.PlayerId );
 
 		/*var msg = new ClientLogin()
 		{
