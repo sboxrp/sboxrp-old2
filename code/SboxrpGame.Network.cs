@@ -59,7 +59,7 @@ internal partial class SboxrpGame
 
 		WebSocket?.Dispose();
 		WebSocket = new();
-		await WebSocket.Connect( "wss://strafedb.com/api/ws" );
+		await WebSocket.Connect( "ws://localhost:3000" );
 
 		return WebSocket.IsConnected;
 	}
