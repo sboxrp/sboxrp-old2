@@ -14,7 +14,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: Setup steamcmd
         uses: CyberAndrii/setup-steamcmd@v1
-      - name: Update app
+      - name: Download S&box dedicated server
         run: steamcmd +login anonymous +app_update 1892930 validate +quit
-      - name: List
-        run: ls
+      - name: List 1
+        run: ls C:/hostedtoolcache/windows/steamcmd/latest/i386/
+      - name: List 2
+        run: ls C:/hostedtoolcache/windows/steamcmd/
