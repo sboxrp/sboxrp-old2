@@ -20,3 +20,7 @@ jobs:
         run: ls C:/hostedtoolcache/windows/steamcmd/latest/i386/
       - name: List 2
         run: ls C:/hostedtoolcache/windows/steamcmd/
+      - name: List 3
+        run: ls C:/hostedtoolcache/windows/steamcmd/steamapps/
+      - name: List 4
+        run: ls C:/hostedtoolcache/windows/steamcmd/steamapps/common/
