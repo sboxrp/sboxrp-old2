@@ -25,4 +25,4 @@ jobs:
       - name: List 4
         run: ls C:/hostedtoolcache/windows/steamcmd/latest/i386/steamapps/common/
       - name: List 5
-        run: ls C:/hostedtoolcache/windows/steamcmd/latest/i386/steamapps/common/Dedicated Server/
+        run: ls C:/hostedtoolcache/windows/steamcmd/latest/i386/steamapps/common/s&box Dedicated Server/
